@@ -13,9 +13,10 @@
 
     <form method="post">
         {% csrf_token %}
-        <input type="text" name="title" placeholder="북마크 제목">
+        <!-- <input type="text" name="title" placeholder="북마크 제목">
         <input type="text" name="url" placeholder="북마크 url">
-        <input type="text" name="memo" placeholder="북마크 메모">
+        <input type="text" name="memo" placeholder="북마크 메모"> -->
+        {{ form.as_p }}
 
         <input type="submit" value="북마크 등록">
 

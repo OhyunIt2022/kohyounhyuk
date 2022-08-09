@@ -14,7 +14,11 @@
 
 </ul>
 <a href="/bookmark/update/{{bookmark.id}}/">수정하기</a>
+<a href="{% url 'bookmarks:update' bookmark.id %}">수정하기2</a>
+
 <a href="/bookmark/delete/{{bookmark.id}}/">삭제하기</a>
+<a href="{% url 'bookmarks:delete' bookmark.id %}">삭제하기2</a>
+
 
 </body>
 </html>

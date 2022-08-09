@@ -14,16 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from bookmarks import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('bookmark/', views.bookmark_list),
-    path('bookmark/<int:pk>/', views.bookmark_detail),
-    path('bookmark/create/', views.bookmark_create),
-    path('bookmark/update/<int:pk>/', views.bookmark_update),
-    path('bookmark/delete/<int:pk>/', views.bookmark_delete)
+    path('bookmark/', include('bookmarks.urls'))
+
+
+    # path('bookmark/', views.bookmark_list),
+    # path('bookmark/<int:pk>/', views.bookmark_detail),
+    # path('bookmark/create/', views.bookmark_create),
+    # path('bookmark/update/<int:pk>/', views.bookmark_update),
+    # path('bookmark/delete/<int:pk>/', views.bookmark_delete)
 
 
 ]
