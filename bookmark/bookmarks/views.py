@@ -73,7 +73,7 @@ def bookmark_update(request, pk):
             bookmark = form.save()
             return redirect(f'bookmarks:detail', bookmark.id)
     else:
-        form = BookmarkForm()
+        form = BookmarkForm(instance=bookmark)
         context['form'] = form
     return render(request, 'bookmark_update.html', context)   
 
@@ -88,8 +88,40 @@ def bookmark_delete(request, pk):
 
     return render(request, 'bookmark_delete.html', context)
 
+from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
+
+class BookmarkListView(ListView):
+    #1.모델 정하기
+    model = Bookmark
+
+    #2. context(변수명) 정하기
+    context_object_name = 'bookmark_list'
+
+    #어떤 templates연결한건지 정하기
+    template_name = 'bookmark_list.html'
+
+class BookmarkDetailView(DetailView):
+    model=Bookmark
+    context_object_name = 'bookmark'
+    template_name = 'bookmark_detail.html'
+
+from django.urls import reverse_lazy
+
+class BookmarkCreateView(CreateView):
+    model=Bookmark
+    template_name = 'bookmark_create.html'
+    form_class = BookmarkForm
+    success_url = reverse_lazy('bookmarks:list')
 
 
+class BookmarkUpdateView(UpdateView):
+    model=Bookmark
+    template_name = 'bookmark_Update.html'
+    form_class = BookmarkForm
+    success_url = reverse_lazy('bookmarks:list')
 
-
-   
+class BookmarkDeleteView(DeleteView):
+    model=Bookmark
+    template_name = 'bookmark_delete.html'
+    success_url = reverse_lazy('bookmarks:list')
+    context_object_name='bookmark'
