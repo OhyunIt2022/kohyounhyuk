@@ -13,11 +13,9 @@
         <li>memo : {{ bookmark.memo }}</li>
 
 </ul>
-<a href="/bookmark/update/{{bookmark.id}}/">수정하기</a>
-<a href="{% url 'bookmarkapp:update' bookmark.id %}">수정하기2</a>
+<a href="{% url 'bookmarkapp:update' bookmark.id %}">수정하기</a>
 
-<a href="/bookmark/delete/{{bookmark.id}}/">삭제하기</a>
-<a href="{% url 'bookmarkapp:delete' bookmark.id %}">삭제하기2</a>
+<a href="{% url 'bookmarkapp:delete' bookmark.id %}">삭제하기</a>
 
 
 </body>
