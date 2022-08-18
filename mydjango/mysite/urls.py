@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('bookmark/', include('bookmarkapp.urls')),
     path('blog/' , include('blogapp.urls')),
-    path('',views.HomeView.as_view())
+    path('',views.HomeView.as_view()),
+    path('about/',views.AboutView.as_view())
 ]
